@@ -19,17 +19,17 @@
             (name: pkg:
             let
                 result = builtins.tryEval
-                (
-                    if nixpkgs.lib.isDerivation pkg && cond name pkg then
-                    # Skip packages whose closure fails on evaluation.
-                    # This happens for pkgs like `python27Packages.djangoql`
-                    # that have disabled Python pkgs as dependencies.
-                    builtins.seq pkg.outPath
-                        [ (return name pkg) ]
-                    else if pkg.recurseForDerivations or false || pkg.recurseForRelease or false
-                    then packagesWith cond return pkg
-                    else [ ]
-                );
+                    (
+                        if nixpkgs.lib.isDerivation pkg && cond name pkg then
+                        # Skip packages whose closure fails on evaluation.
+                        # This happens for pkgs like `python27Packages.djangoql`
+                        # that have disabled Python pkgs as dependencies.
+                        builtins.seq pkg.outPath
+                            [ (return name pkg) ]
+                        else if pkg.recurseForDerivations or false || pkg.recurseForRelease or false
+                        then packagesWith cond return (builtins.removeAttrs pkg ["passthru" "meta"])
+                        else [ ]
+                    );
             in
             if result.success then result.value
             else [ ]
