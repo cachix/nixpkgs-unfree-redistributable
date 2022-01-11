@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.url = "github:domenkozar/nix-darwin/master";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -66,7 +66,7 @@
           agents = {
             unfree-m1 = (darwin.lib.darwinSystem {
               system = "aarch64-darwin";
-              modules = [ ./agents/m1.nix ];
+              modules = [ ./agents/m1.nix (darwin + "/pkgs/darwin-installer/installer.nix") ];
             }).system;
           };
         })
