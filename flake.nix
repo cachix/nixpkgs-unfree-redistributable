@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    darwin.url = "github:domenkozar/nix-darwin/master";
+    darwin.url = "github:domenkozar/nix-darwin/cachix-deploy";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 

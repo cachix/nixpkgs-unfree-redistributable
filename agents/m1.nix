@@ -10,6 +10,9 @@
     experimental-features = flakes nix-command
   '';
 
+  networking.hostName = "unfree-m1";
+  services.cachix-agent.enable = true;
+
   # required on M1
   programs.zsh.enable = true;
 
