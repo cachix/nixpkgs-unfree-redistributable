@@ -3,13 +3,15 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
+    nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
     darwin.url = "github:domenkozar/nix-darwin/cachix-deploy";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, darwin, nixpkgs }:
+  outputs = { self, darwin, nixpkgs, nixpkgs-unstable }:
     let
       pkgs = import nixpkgs { system = "aarch64-darwin"; };
+      unstable-pkgs = import nixpkgs-unstable { system = "aarch64-darwin"; };
       systems = nixpkgs.lib.platforms.linux ++ nixpkgs.lib.platforms.darwin;
 
       # TODO: expose in lib
@@ -66,7 +68,12 @@
           agents = {
             unfree-m1 = (darwin.lib.darwinSystem {
               system = "aarch64-darwin";
-              modules = [ ./agents/m1.nix (darwin + "/pkgs/darwin-installer/installer.nix") ];
+              modules = [ 
+                ./agents/m1.nix 
+                (darwin + "/pkgs/darwin-installer/installer.nix") 
+                # needed until 21.11 has cachix 0.7.0
+                { services.cachix-agent.package = unstable-pkgs.cachix; } 
+              ];
             }).system;
           };
         })
