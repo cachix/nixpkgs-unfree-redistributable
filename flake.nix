@@ -2,17 +2,15 @@
   description = "Redistributable unfree packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-21.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/master";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     cachix.url = "github:cachix/cachix";
   };
 
-  outputs = { self, darwin, nixpkgs, nixpkgs-unstable, cachix }:
+  outputs = { self, darwin, nixpkgs, cachix }:
     let
       pkgs = import nixpkgs { system = "aarch64-darwin"; };
-      unstable-pkgs = import nixpkgs-unstable { system = "aarch64-darwin"; };
       systems = nixpkgs.lib.platforms.linux ++ nixpkgs.lib.platforms.darwin;
 
       # TODO: expose in lib
