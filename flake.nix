@@ -71,7 +71,8 @@
                 ./agents/m1.nix 
                 (darwin + "/pkgs/darwin-installer/installer.nix") 
                 # get the latest cachix development version
-                { services.cachix-agent.package = import cachix { inherit system; }; } 
+                { services.cachix-agent.package = import cachix { inherit system; };
+                } 
               ];
             }).system;
           };
