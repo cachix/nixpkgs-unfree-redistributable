@@ -1,5 +1,20 @@
 {
   "nodes": {
+    "cachix": {
+      "locked": {
+        "lastModified": 1657331168,
+        "narHash": "sha256-zr4VHrhqK2rSUY6AhZlPOvn9UjSgivo0KtIu+a+u62M=",
+        "owner": "cachix",
+        "repo": "cachix",
+        "rev": "10166f2f052d0e33a106bf7e7d0fc62a9f7216fe",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "cachix",
+        "type": "github"
+      }
+    },
     "darwin": {
       "inputs": {
         "nixpkgs": [
@@ -7,27 +22,26 @@
         ]
       },
       "locked": {
-        "lastModified": 1642594098,
-        "narHash": "sha256-xvPKC64/SotHSGU2W0wKsP2qhIlU+c0EHnJeKon0cD8=",
-        "owner": "domenkozar",
+        "lastModified": 1651916036,
+        "narHash": "sha256-UuD9keUGm4IuVEV6wdSYbuRm7CwfXE63hVkzKDjVsh4=",
+        "owner": "LnL7",
         "repo": "nix-darwin",
-        "rev": "3a6970d5e2e02c6c46bff1cb823b9f051475881a",
+        "rev": "2f2bdf658d2b79bada78dc914af99c53cad37cba",
         "type": "github"
       },
       "original": {
-        "owner": "domenkozar",
-        "ref": "cachix-deploy",
+        "owner": "LnL7",
         "repo": "nix-darwin",
         "type": "github"
       }
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1642522226,
-        "narHash": "sha256-m/j9U8KYuwwxjwgRCjmEj8ejftvdMLJ+NGXh/L2I4FU=",
+        "lastModified": 1656782578,
+        "narHash": "sha256-1eMCBEqJplPotTo/SZ/t5HU6Sf2I8qKlZi9MX7jv9fw=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "610d4ea2750e064bf34b33fa38cb671edd893d3d",
+        "rev": "573603b7fdb9feb0eb8efc16ee18a015c667ab1b",
         "type": "github"
       },
       "original": {
@@ -39,11 +53,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1642592877,
-        "narHash": "sha256-y0GldZz5awb9DMlrJmOb/P8a/37GfBMEXVG3JCV8ME8=",
+        "lastModified": 1657328424,
+        "narHash": "sha256-YBeBpAuMv2ITWJ2RrpZHsga5MCqadLp3NnPda9peDiY=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e098427f7509bda1a70ee83f2bc1f6f756bb9934",
+        "rev": "25db5d667c61b9f5ae2b8f8054cd4ff0777fbf3e",
         "type": "github"
       },
       "original": {
@@ -55,6 +69,7 @@
     },
     "root": {
       "inputs": {
+        "cachix": "cachix",
         "darwin": "darwin",
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable"
