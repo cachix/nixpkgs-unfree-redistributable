@@ -5,7 +5,7 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
-    cachix.url = "github:cachix/cachix";
+    cachix.url = "github:cachix/cachix/cachix-deployment-create-group";
   };
 
   outputs = { self, darwin, nixpkgs, cachix }:
