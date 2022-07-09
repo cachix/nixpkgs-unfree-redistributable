@@ -11,3 +11,9 @@ Currently fails with:
                 |  ^
             23|   tmpFilename =
     (use '--show-trace' to show detailed location information)
+
+
+m1:
+
+  nix --extra-experimental-features 'nix-command flakes' build
+  CACHIX_ACTIVATE_TOKEN=... cachix deploy activate ./result
