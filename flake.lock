@@ -15,7 +15,43 @@
         "type": "github"
       }
     },
+    "cachix-deploy-flake": {
+      "inputs": {
+        "darwin": "darwin"
+      },
+      "locked": {
+        "lastModified": 1658796946,
+        "narHash": "sha256-DMxJcRYXgRdXcrwGOs6NY1T8ZDJM2TD2R6HsJa+XUDk=",
+        "owner": "cachix",
+        "repo": "cachix-deploy-flake",
+        "rev": "3a4dff2102692e0ac00a880a99b29007ddc82974",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "cachix-deploy-flake",
+        "type": "github"
+      }
+    },
     "darwin": {
+      "inputs": {
+        "nixpkgs": "nixpkgs"
+      },
+      "locked": {
+        "lastModified": 1657835815,
+        "narHash": "sha256-CnZszAYpNKydh6N7+xg+eRtWNVoAAGqc6bg+Lpgq1xc=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "54a24f042f93c79f5679f133faddedec61955cf2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
+    "darwin_2": {
       "inputs": {
         "nixpkgs": [
           "nixpkgs"
@@ -37,6 +73,20 @@
     },
     "nixpkgs": {
       "locked": {
+        "lastModified": 1602411953,
+        "narHash": "sha256-gbupmxRpoQZqL5NBQCJN2GI5G7XDEHHHYKhVwEj5+Ps=",
+        "owner": "LnL7",
+        "repo": "nixpkgs",
+        "rev": "f780534ea2d0c12e62607ff254b6b45f46653f7a",
+        "type": "github"
+      },
+      "original": {
+        "id": "nixpkgs",
+        "type": "indirect"
+      }
+    },
+    "nixpkgs_2": {
+      "locked": {
         "lastModified": 1657296039,
         "narHash": "sha256-Ghh39+aS+pw5sTP/ZO8VIKE6sBhMadDaQZtf+3yu4Vc=",
         "owner": "NixOS",
@@ -54,8 +104,9 @@
     "root": {
       "inputs": {
         "cachix": "cachix",
-        "darwin": "darwin",
-        "nixpkgs": "nixpkgs"
+        "cachix-deploy-flake": "cachix-deploy-flake",
+        "darwin": "darwin_2",
+        "nixpkgs": "nixpkgs_2"
       }
     }
   },

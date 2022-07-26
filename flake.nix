@@ -6,11 +6,11 @@
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
     cachix.url = "github:cachix/cachix";
+    cachix-deploy-flake.url = "github:cachix/cachix-deploy-flake";
   };
 
-  outputs = { self, darwin, nixpkgs, cachix }:
+  outputs = { self, darwin, nixpkgs, cachix, cachix-deploy-flake }:
     let
-      pkgs = import nixpkgs { system = "aarch64-darwin"; };
       systems = nixpkgs.lib.platforms.linux ++ nixpkgs.lib.platforms.darwin;
 
       # TODO: expose in lib
@@ -63,20 +63,20 @@
       );
 
       defaultPackage = forAllSystems (system: 
-        pkgs.writeText "cachix-agents.json" (builtins.toJSON {
-          agents = {
-            unfree-m1 = (darwin.lib.darwinSystem {
-              system = "aarch64-darwin";
-              modules = [ 
-                ./agents/m1.nix 
-                (darwin + "/pkgs/darwin-installer/installer.nix") 
-                # get the latest cachix development version
-                { services.cachix-agent.package = import cachix { inherit system; };
-                } 
-              ];
-            }).system;
+        let 
+          pkgs = import nixpkgs {
+            inherit system;
+            config = { allowUnfreePredicate = isRedistributable; };
           };
-        })
-      );
-    };
+          cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
+        in cachix-deploy-lib.spec {
+          agents = {
+            unfree-m1 = cachix-deploy-lib.darwin {
+              imports = [ ./agents/m1.nix ];
+
+              services.cachix-agent.package = import cachix { system = pkgs.system; };
+            };
+          };
+        });
+  };
 }
