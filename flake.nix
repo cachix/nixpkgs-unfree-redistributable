@@ -64,7 +64,8 @@
 
       defaultPackage = forAllSystems (system: 
         let 
-          pkgs = import nixpkgs { inherit system; };
+          # TODO: this shouldn't be hardcoded
+          pkgs = import nixpkgs { system = "aarch64-darwin"; };
           cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
         in cachix-deploy-lib.spec {
           agents = {
