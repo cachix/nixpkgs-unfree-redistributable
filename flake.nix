@@ -64,10 +64,7 @@
 
       defaultPackage = forAllSystems (system: 
         let 
-          pkgs = import nixpkgs {
-            inherit system;
-            config = { allowUnfreePredicate = isRedistributable; };
-          };
+          pkgs = import nixpkgs { inherit system; };
           cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
         in cachix-deploy-lib.spec {
           agents = {
