@@ -2,11 +2,11 @@
   "nodes": {
     "cachix": {
       "locked": {
-        "lastModified": 1657376339,
-        "narHash": "sha256-A82o4plelPEaptZJmm6RuH6v6XB22U4ED0FgfC/cpic=",
+        "lastModified": 1658871544,
+        "narHash": "sha256-ZPJ7Z3HvFOtVf76pX9X7gkoLB4Wdrn0m6+YaLaBtx94=",
         "owner": "cachix",
         "repo": "cachix",
-        "rev": "9d33855840957daf649d80932541f00e82b3afcb",
+        "rev": "ea5ee7e416cf2c7dc67c3fc4392c395b77c5ede5",
         "type": "github"
       },
       "original": {
@@ -17,14 +17,16 @@
     },
     "cachix-deploy-flake": {
       "inputs": {
-        "darwin": "darwin"
+        "darwin": [
+          "darwin"
+        ]
       },
       "locked": {
-        "lastModified": 1658796946,
-        "narHash": "sha256-DMxJcRYXgRdXcrwGOs6NY1T8ZDJM2TD2R6HsJa+XUDk=",
+        "lastModified": 1658928181,
+        "narHash": "sha256-NrsEthiR/JyjNXl5u9n1x9FyFomBOShboZ1Y0ynp0ZE=",
         "owner": "cachix",
         "repo": "cachix-deploy-flake",
-        "rev": "3a4dff2102692e0ac00a880a99b29007ddc82974",
+        "rev": "0afa224e57675abb8a4bc16a4209b2c2a0df16e7",
         "type": "github"
       },
       "original": {
@@ -35,7 +37,9 @@
     },
     "darwin": {
       "inputs": {
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": [
+          "nixpkgs"
+        ]
       },
       "locked": {
         "lastModified": 1657835815,
@@ -51,47 +55,13 @@
         "type": "github"
       }
     },
-    "darwin_2": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1651916036,
-        "narHash": "sha256-UuD9keUGm4IuVEV6wdSYbuRm7CwfXE63hVkzKDjVsh4=",
-        "owner": "LnL7",
-        "repo": "nix-darwin",
-        "rev": "2f2bdf658d2b79bada78dc914af99c53cad37cba",
-        "type": "github"
-      },
-      "original": {
-        "owner": "LnL7",
-        "repo": "nix-darwin",
-        "type": "github"
-      }
-    },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1602411953,
-        "narHash": "sha256-gbupmxRpoQZqL5NBQCJN2GI5G7XDEHHHYKhVwEj5+Ps=",
-        "owner": "LnL7",
-        "repo": "nixpkgs",
-        "rev": "f780534ea2d0c12e62607ff254b6b45f46653f7a",
-        "type": "github"
-      },
-      "original": {
-        "id": "nixpkgs",
-        "type": "indirect"
-      }
-    },
-    "nixpkgs_2": {
-      "locked": {
-        "lastModified": 1657296039,
-        "narHash": "sha256-Ghh39+aS+pw5sTP/ZO8VIKE6sBhMadDaQZtf+3yu4Vc=",
+        "lastModified": 1658777571,
+        "narHash": "sha256-gJMDUeaRhi47NxtrfFMIejlV5N3Ra2669w16Ndz2Jo0=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "71d7a4c037dc4f3e98d5c4a81b941933cf5bf675",
+        "rev": "f0fa012b649a47e408291e96a15672a4fe925d65",
         "type": "github"
       },
       "original": {
@@ -105,8 +75,8 @@
       "inputs": {
         "cachix": "cachix",
         "cachix-deploy-flake": "cachix-deploy-flake",
-        "darwin": "darwin_2",
-        "nixpkgs": "nixpkgs_2"
+        "darwin": "darwin",
+        "nixpkgs": "nixpkgs"
       }
     }
   },
