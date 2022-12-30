@@ -73,7 +73,7 @@
             unfree-m1 = cachix-deploy-lib.darwin {
               imports = [ ./agents/m1.nix ];
 
-              services.cachix-agent.package = import cachix { system = pkgs.system; };
+              services.cachix-agent.package = cachix.packages.${pkgs.system}.cachix;
             };
           };
         });
