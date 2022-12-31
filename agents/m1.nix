@@ -4,6 +4,7 @@
   environment.systemPackages = [ 
     pkgs.vim
     pkgs.git
+    pkgs.cachix
   ];
 
   nix.extraOptions = ''
