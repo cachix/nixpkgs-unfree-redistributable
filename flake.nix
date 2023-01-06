@@ -2,15 +2,10 @@
   description = "Redistributable unfree packages";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.05";
-    darwin.url = "github:LnL7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
-    cachix.url = "github:cachix/cachix";
-    cachix-deploy-flake.url = "github:cachix/cachix-deploy-flake";
-    cachix-deploy-flake.inputs.darwin.follows = "darwin";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-22.11";
   };
 
-  outputs = { self, darwin, nixpkgs, cachix, cachix-deploy-flake }:
+  outputs = { self, nixpkgs }:
     let
       systems = nixpkgs.lib.platforms.linux ++ nixpkgs.lib.platforms.darwin;
 
@@ -62,20 +57,5 @@
             };
         in nixpkgs.lib.listToAttrs (packagesWith (name: pkg: isRedistributable pkg) (name: pkg: { name = "${name}"; value = pkg; } ) pkgs)
       );
-
-      defaultPackage = forAllSystems (system: 
-        let 
-          # TODO: this shouldn't be hardcoded
-          pkgs = import nixpkgs { system = "aarch64-darwin"; };
-          cachix-deploy-lib = cachix-deploy-flake.lib pkgs;
-        in cachix-deploy-lib.spec {
-          agents = {
-            unfree-m1 = cachix-deploy-lib.darwin {
-              imports = [ ./agents/m1.nix ];
-
-              services.cachix-agent.package = cachix.packages.${pkgs.system}.cachix;
-            };
-          };
-        });
   };
 }
